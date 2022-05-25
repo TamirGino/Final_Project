@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>Sign In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <style media="screen">
+
+      body {
+        background-color: #E6E6FA;
+      }
+      h1{
+        color: #9A616D;
+        text-shadow: 0 0 3px #FF0000;
+        text-align: center;
+      }
+      h2{
+        color: #9A616D;
+        text-shadow: 0 0 3px #FF0000;
+        text-align: center;
+      }
+      .green-color {
+        color:green;
+    }
+    #v_span{
+      width: 50%;
+    }
+      #preloader{
+        position: fixed;
+        z-index: 100;
+      }
+      #rec_size{
+        visibility: hidden;
+      }
+      .progress_bar{
+        position: relative;
+        width:300px;
+        height:40px;
+      }
+      .progress_bar_second{
+        position: relative;
+        width:300px;
+        height:40px;
+      }
+      .progress_bar_fill{
+        background-color: #90EE90;
+        border-radius: 15px;
+        width: 0%;
+        height: 100%;
+        transition: all 2s;
+      }
+      .progress_bar_fill_second{
+        background-color: #cccccc;
+        border-radius: 15px;
+        width: 0%;
+        height: 100%;
+        transition: all 2s;
+      }
+      .progress_bar_value{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        right; 15px;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        font: bold 14px 'Quicksand', sans-serif;
+      }
+      .progress_bar_value_second{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        right; 15px;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        font: bold 14px 'Quicksand', sans-serif;
+      }
+      #output_tbl {
+        border: 1px solid black;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        background-color: white;
+        position:relative;
+    }
+    #center_tbl1 {
+      top:100px;
+      width: 300px;
+      height: 50px;
+      left: 100px;
+      position: fixed;
+    }
+    #center_tbl2 {
+      top:300px;
+      width: 300px;
+      height: 50px;
+      left: 100px;
+      position: fixed;
+    }
+    </style>
+    <script >
+      setTimeout(fade_out, 2000);
+
+      function fade_out() {
+        $("#preloader").fadeOut().empty();
+        var rec_sizes = document.getElementById("rec_size");
+        rec_sizes.style.visibility = "visible";
+        const pb = new ProgressBar(document.querySelector('.progress_bar'), document.querySelector('.progress_bar_second'), 0, 0);
+        pb.setValue(Math.round({{ help_insert1 }}), Math.round({{ help_insert3 }}));
+      }
+
+
+    </script>
+
+  </head>
+  <body>
+    <h1>SiZeFiT</h1>
+    <hr>
+    <br><br><br><br><br><br><br>
+    <div class="d-flex justify-content-center" >
+    <div class="spinner-border" role="status" id="preloader">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+
+<div id="rec_size">
+  <div id="center_tbl1">
+  <table align='center'>
+    <tr>
+      <td id='output_tbl'>
+        <div id="first">
+          <h2> {{ help_insert }}  </h2><span id="v_span" style="position: absolute; top:10px; right:5px;" class="bi bi-check-lg green-color"> </span>
+        </div>
+      </td>
+      </tr>
+      <tr>
+      <td id='output_tbl'>
+        <div class="progress_bar">
+          <div class="progress_bar_value">0%</div>
+            <div class="progress_bar_fill"></div>
+        </div>
+          </td>
+    </tr>
+    </table>
+    </div>
+    <div id="center_tbl2">
+      <table align='center'>
+        <tr>
+      <td id='output_tbl'>
+        <div id="second">
+        <h2> {{ help_insert2 }}  </h2>
+        </div>
+      </td>
+        </tr>
+      <tr>
+      <td id='output_tbl'>
+        <div class="progress_bar_second">
+          <div class="progress_bar_value_second">0%</div>
+            <div class="progress_bar_fill_second"></div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  </div>
+  </div>
+
+  </body>
+  <script type="text/javascript">
+    class ProgressBar{
+      constructor (element, element2, initialValue = 0, initialValue2 = 0 ) {
+        this.valueElem = element.querySelector('.progress_bar_value');
+        this.fillElem = element.querySelector('.progress_bar_fill');
+        this.valueElem_second = element2.querySelector('.progress_bar_value_second');
+        this.fillElem_second = element2.querySelector('.progress_bar_fill_second');
+
+        this.setValue(initialValue);
+      }
+
+      setValue (newValue, newValue2) {
+        this.value = newValue;
+        this.update(newValue, newValue2);
+      }
+
+      update(value1, value2){
+        const percentage = value1 + '%';
+        this.fillElem.style.width = percentage;
+        this.valueElem.textContent = percentage;
+        console.log(value1);
+        console.log(value2);
+        var tbl1 = document.getElementById("center_tbl1");
+        var tbl2 = document.getElementById("center_tbl2");
+        if (value2 !== 0)
+          {
+            const percentage2 = value2 + '%';
+            this.fillElem_second.style.width = percentage2;
+            this.valueElem_second.textContent = percentage2;
+        }else {
+            tbl2.style.display = "none";
+            tbl1.style.top = "200px";
+      }
+    }
+}
+
+  </script>
+</html>

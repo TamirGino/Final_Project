@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Process</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style media="screen">
+      body {
+        background-color: #E6E6FA;
+      }
+      h1{
+        color: #9A616D;
+        text-shadow: 0 0 3px #FF0000;
+        text-align: center;
+      }
+      #shapeTbl {
+          border-spacing: 10px;
+          border-collapse: separate;
+      }
+      #selectImg{
+      display: block;
+      height: 100px;
+      width: 100px;
+      }
+      #selectImg:hover{
+        opacity: 0.5;
+      }
+      #brandTd {
+        border: 1px solid black;
+        height: 100px;
+        width: 100px;
+        text-align: center;
+        background-color: white;
+    }
+    #brandImg{
+    display: block;
+    height: 50px;
+    width: 50px;
+    }
+    #brandImg:hover{
+      opacity: 0.5;
+    }
+    .previous:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    .previous {
+      background-color: #f1f1f1;
+      color: black;
+      text-decoration: none;
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 50%;
+    }
+
+    /* HIDE RADIO */
+    .a , .b , .c  , .d , .e , .f , .g  , .h {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    /* IMAGE STYLES */
+    [type=radio ] + img {
+      cursor: pointer;
+    }
+
+    /* CHECKED STYLES */
+    [type=radio]:checked + img {
+      outline: 3px dashed black;
+    }
+
+      #textInput{
+        right: 200px;
+        text-align: center;
+        background-color: #E6E6FA;
+        border: none;
+      }
+      #image:hover{
+        opacity: 0.5;
+        }
+
+      #image_tummy1:hover{
+          opacity: 0.5;
+        }
+        #image_tummy2:hover{
+            opacity: 0.5;
+          }
+          #image_tummy3:hover{
+              opacity: 0.5;
+            }
+      #inputURL {
+        top:100px;
+        width: 300px;
+        height: 50px;
+        left: -440px;
+        position: fixed;
+        animation: mymove 2s;
+        animation-fill-mode: forwards;
+        animation-delay: 1s;
+      }
+
+      #measurement1 {
+        top:100px;
+        width: 300px;
+        height: 50px;
+        left: -440px;
+        position: fixed;
+        animation: mymove 2s;
+        animation-fill-mode: forwards;
+        animation-delay: 1s;
+      }
+      #measurement2 {
+        top:100px;
+        width: 300px;
+        height: 50px;
+        left: -440px;
+        position: fixed;
+      }
+      #measurement3 {
+        top:100px;
+        width: 300px;
+        height: 50px;
+        left: -440px;
+        position: fixed;
+      }
+      #shape {
+        top:100px;
+        width: 300px;
+        height: 50px;
+        left: -440px;
+        position: fixed;
+      }
+      #range {
+        top:100px;
+        width: 300px;
+        height: 50px;
+        left: -440px;
+        position: fixed;
+      }
+      #brands {
+        top:50px;
+        width: 300px;
+        height: 50px;
+        left: -440px;
+        position: fixed;
+      }
+      #itemSelect {
+        top:100px;
+        width: 300px;
+        height: 50px;
+        left: -440px;
+        position: fixed;
+      }
+      #brandSize {
+        top:100px;
+        width: 300px;
+        height: 50px;
+        left: -440px;
+        position: fixed;
+      }
+      @keyframes mymove {
+        0%    {left: -440px;}
+        100% {left:100px;}
+      }
+
+      @keyframes mymove2 {
+        0%   {left: 100px; }
+        50%  {left:300px; opacity: 0.4}
+        100% {left:500px; opacity: 0.2}
+      }
+
+      @keyframes mymove3 {
+        0%    {left: -440px;}
+        100% {left:100px;}
+      }
+      @keyframes mymove4 {
+        0%    {left: 600px;}
+        100% {left:100px;}
+      }
+      @keyframes mymove5 {
+        0%   {left: 100px; }
+        50%  {left:-100px; opacity: 0.4}
+        100% {left:-300px; opacity: 0.2}
+      }
+
+    </style>
+    <script type="text/javascript">
+    function slideOutIn(elOut,elIn,value1,value2){
+      console.log(value1);
+      if (value1.length == 0 || value2.length == 0 || value2 == "Choose..." )
+        {
+         alert("Input is empty !\nPlease fill in the input");
+      }else {
+      var elem = document.getElementById(elOut);
+      elem.style.animation = "mymove2 1s linear";
+      elem.style.left = "600px";
+      var elem = document.getElementById(elIn);
+      elem.style.animation = "mymove3 1s linear";
+      elem.style.left = "100px";
+    }
+  }
+    function back(elOut,elIn){
+      var elem = document.getElementById(elOut);
+      elem.style.animation = "mymove4 1s linear";
+      elem.style.left = "100px";
+      var elem = document.getElementById(elIn);
+      elem.style.animation = "mymove5 1s linear";
+      elem.style.left = "-440px";
+    }
+    function RangeHeight(value)
+    {
+    	document.getElementById('span1').innerHTML=value + " (cm)";
+    }
+    function RangeWeight(value)
+    {
+    	document.getElementById('span2').innerHTML=value + " (kg)";
+    }
+    function submitImg(i) {
+          x = document.getElementById("image_tummy"+i).getAttribute("value");
+          document.getElementById("tummy_shape_post").value = x;
+    }
+          function updateTextInput(val) {
+                if (val == 0){
+                  document.getElementById('textInput').value="Tight";
+                }
+                else if (val == 1) {
+                document.getElementById('textInput').value="Slightly Tight";
+             }
+                else if (val == 2) {
+                document.getElementById('textInput').value="Average";
+             }
+               else if (val == 3) {
+               document.getElementById('textInput').value="Slightly Loose";
+             }
+             else if (val == 4) {
+             document.getElementById('textInput').value="Loose";
+           }
+            }
+        function check_url(elOut,elIn,url){
+          var res = url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+    			if (res == null){
+            alert("Invalid URL !\nPlease put a correct URL address ");
+          } else{
+        var elem = document.getElementById(elOut);
+        elem.style.animation = "mymove2 1s linear";
+        elem.style.left = "600px";
+        var elem = document.getElementById(elIn);
+        elem.style.animation = "mymove3 1s linear";
+        elem.style.left = "100px";
+      }
+    }
+    //function isValidURL(string) {
+			//var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+			//if (res !== null){
+        //return true;
+    //  } else{
+      //  return false;
+      //}
+		//};
+
+		//console.log(isValidURL("https://yossikimchy.github.io/Final-Project/"));
+		//console.log(isValidURL("https://www.eyehunts.com"));
+		//console.log(isValidURL("www.example.com"));
+    //console.log(isValidURL("https://tutorial.eyehunts.com/js/url-regex-validation-javascript-example-code/"));
+
+    </script>
+  </head>
+  <body>
+    {% block content %}
+    <h1>SiZeFiT</h1>
+    <hr>
+    <br><br><br><br>
+    <form class="" action="/add_user/" method="post">
+      {% csrf_token %}
+      <div id='measurement1'>
+      <h3 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 3px;">Your Measurements</h3>
+      <hr>
+      <input name="url" type="hidden" value={{ url }}>
+      <input name="user_name" type="hidden" value={{ user.username}}>
+      <br><br>
+          <div class="col-auto my-1 align-items-center">
+            <input type="text" name="age" value="" placeholder="Age">
+            <br><br>
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Gender</label>
+            <select name="gender" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+              <option selected>Choose...</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+          <br><br>
+          <div class="col text-center">
+         <button type="button" class="btn btn-primary btn-lg" onclick="slideOutIn('measurement1','measurement2',age.value,gender.value);">Continue >> </button>
+         </div>
+      </div>
+
+      <div id='measurement2'>
+        <h3 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 3px;">Your Height</h3>
+        <hr>
+        <br><br>
+      <div class="row">
+        <div class="col">
+          <input name="height" style="width:250px" type="range" min="140" max="220" value="180" onchange="RangeHeight(this.value)" />
+          <br>
+          <span id="span1">180 (cm)</span>
+        </div>
+        </div>
+        <br><br>
+        <div class="col text-center">
+        <button type="button" class="previous round" onclick="back('measurement1','measurement2');">&#8249;</button>
+       <button type="button" class="btn btn-primary btn-lg" onclick="slideOutIn('measurement2','measurement3',height.value,height.value);">Continue >> </button>
+        </div>
+      </div>
+        <div id='measurement3'>
+          <h3 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 3px;">Your Weight</h3>
+          <hr>
+          <br><br>
+        <div class="col">
+          <input name="weight" style="width:250px" type="range" min="50" max="150" value="100" onchange="RangeWeight(this.value)" />
+          <br>
+          <span id="span2">100 (kg)</span>
+        </div>
+       <br><br>
+      <div class="col text-center">
+      <button type="button" class="previous round" onclick="back('measurement2','measurement3');">&#8249;</button>
+     <button type="button" class="btn btn-primary btn-lg" onclick="slideOutIn('measurement3','shape',weight.value,weight.value);">Continue >> </button>
+     </div>
+     </div>
+
+
+<div id='shape'>
+  <h3 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 3px;">Your tummy shape</h3>
+  <hr>
+  <table id='shapeTbl'>
+    <tr>
+      <td><a href="#" value="Flatter" onclick="slideOutIn('shape','range','pass','pass');submitImg('1');" id="image_tummy1" >{% load static %}<img width="70" height="200" alt="img1" src="{% static "users/media/flatter.png" %}" ></img></a><label for="Flatter">Flatter</label></td>
+      <td><a href="#" value="Average" onclick="slideOutIn('shape','range','pass','pass');submitImg('2')" id="image_tummy2" >{% load static %}<img width="120" height="200" alt="img2" src="{% static "users/media/avarage.png" %}" ></img></a>&nbsp&nbsp&nbsp&nbsp&nbsp<label for="Avarage">Avarage</label></td>
+      <td><a href="#" value="Curvier" onclick="slideOutIn('shape','range','pass','pass');submitImg('3')" id="image_tummy3" >{% load static %}<img width="130" height="200" alt="img3" src="{% static "users/media/curvier.png" %}" ></img></a>&nbsp&nbsp&nbsp&nbsp&nbsp<label for="Curvier">Curvier</label></td>
+    </tr>
+    <tr>
+      <input type="hidden" id="tummy_shape_post" name="tummy_shape" value="">
+    </tr>
+  </table>
+  <button type="button" class="previous round" onclick="back('measurement3','shape');">&#8249;</button>
+</div>
+
+
+<div id='range'>
+  <h3 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 3px;">Fit preference</h3>
+  <hr>
+  <p>I want this item to fit...</p>
+  <input name="fit_preference" type="text" id='textInput' class=" w-100 p-3 text-center" style="font-weight:  bold;" value="Average"  >
+  <br><br>
+  <input type="range" class="form-range w-100 p-3" style="background-color: white;" min="0" max="4" id="customRange2" onchange="updateTextInput(this.value);">
+  <table>
+    <td> <p style="font-style: italic;"> <<.Tight</p></td>
+    <td> <p style="font-style: italic;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLoose>></p></td>
+  </table>
+  <div class="col text-center">
+    <button type="button" class="previous round" onclick="back('shape','range');">&#8249;</button>
+ <button type="button" class="btn btn-primary btn-lg" onclick="slideOutIn('range','itemSelect','pass','pass');">Continue >> </button>
+ </div>
+</div>
+
+<div id='itemSelect'>
+  <h3 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 3px;">Select Item</h3>
+  <hr>
+<table align='center'>
+  <tr>
+    <td id='brandTd'><label>
+        <input name="item" class="a" type="radio" value="T-shirt" >
+        {% load static %}<img id='selectImg' src="{% static "users/media/t-shirt.png" %}">
+        </label></td>
+    <td id='brandTd'><label>
+        <input name="item" class="b" type="radio" value="Pants">
+        {% load static %}<img id='selectImg' src="{% static "users/media/jeans.jpg" %}">
+        </label></td>
+  </tr>
+  </table>
+  <br>
+  <div class="col text-center">
+    <button type="button" class="previous round" onclick="back('range','itemSelect');">&#8249;</button>
+  <button type="button" class="btn btn-primary btn-lg" onclick="slideOutIn('itemSelect','brands',item.value,item.value);">Continue >> </button>
+  </div>
+  </div>
+
+<div id='brands'>
+    <h3 class="fw-normal mb-3 pb-1 text-center" style="letter-spacing: 3px;">Brand you own</h3>
+    <p>Select a brand you normally wear</p>
+    <hr>
+    <table align='center'>
+      <tr>
+        <td id='brandTd'><label>
+            <input class="a" type="radio" name="brand" value="H&M">
+            {% load static %}<img id='brandImg' src="{% static "users/media/H&M.png" %}">
+            </label></td>
+        <td id='brandTd'><label>
+            <input class="b" type="radio" name="brand" value="ZARA">
+            {% load static %}<img id='brandImg' src="{% static "users/media/Zara.png" %}">
+            </label></td>
+      </tr>
+      <tr>
+        <td id='brandTd'><label>
+            <input class="e" type="radio" name="brand" value="PULL&BEAR">
+            {% load static %}<img id='brandImg' src="{% static "users/media/Pull&Bear.png" %}">
+            </label></td>
+        <td id='brandTd'><label>
+            <input class="f" type="radio" name="brand" value="ASOS">
+            {% load static %}<img id='brandImg' src="{% static "users/media/Asos.png" %}">
+            </label></td>
+      </tr>
+    </table>
+    <br>
+    <div class="col text-center">
+      <button type="button" class="previous round" onclick="back('itemSelect','brands');">&#8249;</button>
+    <button type="button" class="btn btn-primary btn-lg" onclick="slideOutIn('brands','brandSize',brand.value,brand.value);">Continue>></button>
+    </div>
+</div>
+
+<div id='brandSize'>
+    <h3 class="fw-normal mb-3 pb-1 text-center" style="letter-spacing: 3px;">Brand you own</h3>
+    <p>Select Size brand you normally wear</p>
+    <hr>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="size" id="inlineRadio1" value="XS">
+  <label class="form-check-label" for="inlineRadio1">XS</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="S">
+  <label class="form-check-label" for="inlineRadio2">S</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="M">
+  <label class="form-check-label" for="inlineRadio3">M</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="L" checked>
+  <label class="form-check-label" for="inlineRadio4">L</label>
+</div>
+<br><br>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="XL">
+  <label class="form-check-label" for="inlineRadio5">XL</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="XXL">
+  <label class="form-check-label" for="inlineRadio5">XXL</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="size" id="inlineRadio2" value="XXXL">
+  <label class="form-check-label" for="inlineRadio5">XXXL</label>
+</div>
+<br> <br>
+<div class="col text-center">
+  <button type="button" class="previous round" onclick="back('brands','brandSize');">&#8249;</button>
+<button type="submit" class="btn btn-primary btn-lg" onclick="">Find my size</button>
+
+</div>
+</div>
+{% endblock %}
+</form>
+  </body>
+</html>
